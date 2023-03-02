@@ -18,5 +18,10 @@ public class RoleService
 	{
 		return role_repo.findAll();
 	}
+	
+	public Role getById(int id)
+	{
+		return role_repo.findById(id).get();
+	}
 
 }

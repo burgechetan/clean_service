@@ -21,6 +21,8 @@ public class Login
 	@Column
 	private String password;
 	@Column
+	private String email;
+	@Column
 	private String contact;
 	@Column
 	private String  address;
@@ -33,6 +35,27 @@ public class Login
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Login(String password, String email, String contact, String address, Role role_id, boolean status) {
+		super();
+		this.password = password;
+		this.email = email;
+		this.contact = contact;
+		this.address = address;
+		this.role_id = role_id;
+		this.status = status;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public int getLogin_id() {
 		return login_id;
 	}
