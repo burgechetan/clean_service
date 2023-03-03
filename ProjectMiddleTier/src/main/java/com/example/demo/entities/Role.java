@@ -16,6 +16,7 @@ public class Role
 	private int role_id;
 	@Column
 	private String role_name;
+	
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub

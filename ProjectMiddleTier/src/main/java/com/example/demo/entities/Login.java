@@ -31,9 +31,10 @@ public class Login
 	private Role role_id;
 	@Column
 	private boolean status;
-	public Login() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public Login() 
+	{
+		
 	}
 	
 	
