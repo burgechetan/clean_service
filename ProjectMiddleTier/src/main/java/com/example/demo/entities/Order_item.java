@@ -19,15 +19,15 @@ public class Order_item
 	
 	@ManyToOne
 	@JoinColumn(name="o_id")
-	private Order order_id;
-	
-	@OneToOne
-	@JoinColumn(name="s_id")
-	private Service s_id;
+	private Order o_id;
 	
 	@OneToOne
 	@JoinColumn(name="sp_id")
 	private ServiceProvider sp_id;
+	
+	@OneToOne
+	@JoinColumn(name="s_id")
+	private Service s_id;
 	
 	@OneToOne
 	@JoinColumn(name="status_id")
@@ -42,11 +42,11 @@ public class Order_item
 	}
 
 	public Order getOrder_id() {
-		return order_id;
+		return o_id;
 	}
 
 	public void setOrder_id(Order order_id) {
-		this.order_id = order_id;
+		this.o_id = order_id;
 	}
 
 	public Service getS_id() {

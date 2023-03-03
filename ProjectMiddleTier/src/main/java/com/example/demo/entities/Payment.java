@@ -16,7 +16,7 @@ public class Payment
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY )
 	private int p_id;
-	
+
 	@OneToOne
 	@JoinColumn(name="o_id")
 	private Order o_id;

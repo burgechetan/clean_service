@@ -9,25 +9,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name="/Orders")
+@Table(name="orders")
 public class Order 
 {
 	@Id							
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private int o_id;
-	
+
 	@OneToMany
 	@JoinColumn(name="oi_id")
 	private List<Order_item> order_items;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="c_id")
 	private Customer c_id;
+	
+	@OneToOne
+	@JoinColumn(name="p_id")
+	private Payment p_id;
 	
 	@Column
 	private Date order_date;
@@ -63,4 +68,5 @@ public class Order
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
 	}	
+	
 }

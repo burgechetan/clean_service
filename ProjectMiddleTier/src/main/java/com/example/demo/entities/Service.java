@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,7 +17,7 @@ public class Service
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int s_id;
-		
+	
 	@Column
 	String s_name;
 	
@@ -29,7 +30,7 @@ public class Service
 	@Column
 	double cost;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="sp_id")
 	private ServiceProvider sp_id;
 
@@ -80,6 +81,4 @@ public class Service
 	public void setSp_id(ServiceProvider sp_id) {
 		this.sp_id = sp_id;
 	}
-	
-	
 }
