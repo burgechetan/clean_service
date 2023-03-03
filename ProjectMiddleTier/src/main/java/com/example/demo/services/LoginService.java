@@ -34,4 +34,17 @@ public class LoginService {
 		return login_repo.save(l);
 	}
 	
+	public boolean updateStatus(int id,boolean s)
+	{
+		if (login_repo.updateStatus(id,s) == 1)
+			return true;
+		else
+			return false;
+	}
+	
+	public List<Login> getAllLogin()
+	{
+		return login_repo.findAll();
+	}
+	
 }

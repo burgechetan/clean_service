@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dummyentities.DummyServiceProvider;
 import com.example.demo.entities.Login;
@@ -24,8 +26,10 @@ public class ServiceProviderServices {
 		
 	}
 	
-	public List<ServiceProvider> getAll()
+	public List<ServiceProvider> getPendingRequests()
 	{
-		return sprepo.findAll();
+		return sprepo.getPendingRequests();
 	}
+	
+	 
 }
