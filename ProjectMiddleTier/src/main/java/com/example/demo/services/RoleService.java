@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.entities.Customer;
 import com.example.demo.entities.Role;
 import com.example.demo.repositories.RoleRepository;
 
@@ -23,5 +24,6 @@ public class RoleService
 	{
 		return role_repo.findById(id).get();
 	}
+
 
 }

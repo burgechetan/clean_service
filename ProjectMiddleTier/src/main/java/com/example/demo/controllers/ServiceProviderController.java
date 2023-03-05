@@ -47,6 +47,4 @@ public class ServiceProviderController {
 	{
 		return spservice.getPendingRequests();
 	}
-	
-	
 }
