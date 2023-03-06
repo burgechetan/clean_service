@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom';
 function CustomerHome()
 {
     return(
@@ -14,7 +14,7 @@ function CustomerHome()
                 <Link to="/category" className="navbar-brand">Catagory</Link>
               </li>
               <li className="nav-item">
-                <Link to="/services" className="navbar-brand">Services</Link>
+                <Link to="services" className="navbar-brand">Services</Link>
               </li>
               <li className="nav-item">
                 <Link to="/mybooking" className="navbar-brand">Mybookings</Link>
@@ -26,7 +26,10 @@ function CustomerHome()
           </div>
         </nav>
         </div>
+        <Outlet />
         </div>
+        
+       
     )
 }
 export default CustomerHome;

@@ -1,7 +1,5 @@
 package com.example.demo.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +14,5 @@ public class CustomerService {
 	public Customer registerCustomer(Customer c)
 	{
 		return crpo.save(c);
-	}
-
-	public List<Customer> getAllCustomers() 
-	{
-		return crpo.findAll();
 	}
 }

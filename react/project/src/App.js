@@ -13,6 +13,8 @@ import ServiceProviderRegistration from './components/ServiceProviderRegistratio
 import Home from './components/Home';
 import ServiceProviderRegistrationStatus from './components/ServiceProviderRegistraionStatus';
 import Services from './components/Services';
+import BookingCart from './components/BookingCart';
+ 
 
 
  
@@ -44,6 +46,7 @@ function App() {
             <li className="nav-item">
               <Link to="/admin_registration" className="navbar-brand">AdminRegistration</Link>
             </li>
+            
          
              
           </ul>
@@ -55,15 +58,25 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/customer_registration" element={<CustomerRegistration/>} />
         <Route path="/serviceprovider_registration" element={<ServiceProviderRegistration/>} />
-        
-        <Route path="/customer_home" element={<CustomerHome/>} />
-        <Route path="/serviceprovider_home" element={<ServiceProviderHome/>} />
-        <Route path="/admin_home" element={<AdminHome/>} >
-            <Route path="serviceproviderstatus" element={<ServiceProviderRegistrationStatus/>}/>
-            <Link to="services" className="navbar-brand">Serivices</Link>
+        <Route path="/customer_home" element={<CustomerHome/>} >
+              <Route path="services" element={<Services/>} />
         </Route>
+        
+        <Route path="/serviceprovider_home" element={<ServiceProviderHome/>} >
+          <Route path="services" element={<Services/>} />
+        </Route>
+
+
+        <Route path="/admin_home" element={<AdminHome/>} >
+            <Route path="serviceproviderstatus" element={< ServiceProviderRegistrationStatus/>}/>
+            <Route path="services" element={<Services/>} />
+        </Route>
+        
+
   
         <Route path="/logout" element={<Logout/>} />
+        <Route path="/mybooking" element={<BookingCart/>} />
+        <Route path="/home" element={<Home/>} />
       </Routes>
       </div>
     

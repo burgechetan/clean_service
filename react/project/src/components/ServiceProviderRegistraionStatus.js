@@ -6,6 +6,7 @@ export default function ServiceProviderRegistrationStatus()
 {
 
    const navigate = useNavigate();
+   const [Data,setData]=useState([]);
    
     useEffect(()=>{
             fetch("http://localhost:8080/serviceproviders")
@@ -19,17 +20,20 @@ export default function ServiceProviderRegistrationStatus()
             .then(obj=>{
                 if(Object.keys(obj).length===0)
                 {
+                   // window.location.reload();
+                   setData([]);
                    setMessage("No ServiceProvider Available");
                 }
                 else{
                     setData(obj);
+                    setMessage("");
                 }
                 
                 
                 
             })
             .catch((error)=>{alert("Server error, try after some time")});
-    },[])
+    },[Data])
 
 
     const sendData=(e)=>{
@@ -47,7 +51,8 @@ export default function ServiceProviderRegistrationStatus()
       .then(obj => {
           if(obj)
           {
-            navigate("serviceproviderstatus");
+            //navigate("/admin_home/serviceproviderstatus");
+            //window.location.href="serviceproviderstatus";
           }
           else
           {
@@ -60,7 +65,7 @@ export default function ServiceProviderRegistrationStatus()
      
 
 
-    const [Data,setData]=useState([]);
+    
     const [message,setMessage]=useState("");
 
     return(<div>

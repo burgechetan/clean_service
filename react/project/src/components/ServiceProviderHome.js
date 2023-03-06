@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link,Outlet} from 'react-router-dom';
 function ServiceProviderHome()
 {
     return(
@@ -14,7 +14,7 @@ function ServiceProviderHome()
                 <Link to="/category" className="navbar-brand">Catagory</Link>
               </li>
               <li className="nav-item">
-                <Link to="/services" className="navbar-brand">Services</Link>
+                <Link to="services" className="navbar-brand">Services</Link>
               </li>
               <li className="nav-item">
                 <Link to="/mybooking" className="navbar-brand">MyServices</Link>
@@ -27,6 +27,7 @@ function ServiceProviderHome()
           </div>
         </nav>
         </div>
+        <Outlet />
         </div>
          
    )
