@@ -26,9 +26,11 @@ public class Login
 	private String contact;
 	@Column
 	private String  address;
+	
 	@ManyToOne
 	@JoinColumn(name="role_id")
 	private Role role_id;
+	
 	@Column
 	private boolean status;
 	

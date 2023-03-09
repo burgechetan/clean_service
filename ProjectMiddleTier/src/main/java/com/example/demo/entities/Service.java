@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
+@Entity		 
 @Table(name="services")
 public class Service 
 {
@@ -22,7 +22,7 @@ public class Service
 	String s_name;
 	
 	@Column
-	String description;
+	String descriptions;
 	
 	@Column
 	String duration;
@@ -51,11 +51,11 @@ public class Service
 	}
 
 	public String getDescription() {
-		return description;
+		return descriptions;
 	}
 
 	public void setDescription(String description) {
-		this.description = description;
+		this.descriptions = description;
 	}
 
 	public String getDuration() {

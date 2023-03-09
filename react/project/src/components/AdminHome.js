@@ -1,7 +1,7 @@
 import {Link, Outlet} from 'react-router-dom';
 import {useState, useImperativeHandle} from 'react';
 import {Container , DropdownButton, Dropdown} from 'react-bootstrap';
-import PropTypes from 'prop-types'
+ 
 import { current } from '@reduxjs/toolkit';
 
  
@@ -30,14 +30,11 @@ function AdminHome()
           else{
 
               setData(obj);
-              changeFlag(true);
-             
+              changeFlag(true);  
           }
       })
       .catch((error)=>{alert("Server error, try after some time")});
     }
-
-
 
     return(
         <div className="App">
@@ -54,9 +51,7 @@ function AdminHome()
               <li className="nav-item">
                 <Link to="services" className="navbar-brand">Services</Link>
               </li>
-              <li className="nav-item">
-                <Link to="/mybooking" className="navbar-brand">mybooking</Link>
-              </li>
+              
               <li className="nav-item">
                 <Link to="/logout" className="navbar-brand">Logout</Link>
               </li>
@@ -98,25 +93,10 @@ function AdminHome()
                 <td>{s.duration}</td>
                 <td>{s.cost}</td>
                 <td>{s.sp_id.name}</td>
-                
-              
             </tr>})
         }
         </tbody>
         </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
         <Outlet />
     </div>

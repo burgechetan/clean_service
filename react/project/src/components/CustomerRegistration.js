@@ -197,23 +197,23 @@ export default function CustomerRegistration() {
     const [message,setMessage]=useState("");
    
 
-    return (<div>
+    return (<div  className="container w-50" id="centre">
         
-        <form>
+        <form className="form">
             <div className="mb-3">
-                <label htmlFor="fname" className="form-label">First Name : </label>
+                <label htmlFor="fname" className="form-label h4">First Name : </label>
                     <input type="text" name="fname"className="form-control" id="fname" value={state.fname.value}  onChange={(e)=>{handleChange("fname",e.target.value)}    } />
                     <p style={{display: state.fname.touched && state.fname.hasError ?"block":"none",color: "red"}}> {state.fname.error} </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="lname" className="form-label">Last Name : </label>
+                <label htmlFor="lname" className="form-label h4">Last Name : </label>
                     <input type="text" name="lname" className="form-control" id="lname" value={state.lname.value} onChange={(e)=>{handleChange("lname",e.target.value)}} />
                     <p style={{display: state.lname.touched && state.lname.hasError ?"block":"none",color: "red"}}> {state.lname.error} </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email Id : </label>
+                <label htmlFor="email" className="form-label h4">Email Id : </label>
                     <input type="text" name="email" className="form-control" id="email" value={state.email.value}  onBlur={(e)=>handleBlur(e.target.value)} 
                     onChange={(e)=>{handleChange("email",e.target.value)}} />
                     <p style={{display: state.lname.touched && state.email.hasError ?"block":"none",color: "red"}}> {state.email.error} </p>
@@ -222,27 +222,27 @@ export default function CustomerRegistration() {
             </div>
 
             <div className="mb-3">
-                <label htmlFor="contact" className="form-label">Contact No. : </label>
+                <label htmlFor="contact" className="form-label h4">Contact No. : </label>
                     <input type="text" name="contact" className="form-control" id="contact" value={state.contact.value} onBlur={(e)=>handleContact(e.target.value)} onChange={(e)=>{handleChange("contact",e.target.value)}} />
                     <p style={{display: state.contact.touched && state.contact.hasError ?"block":"none",color: "red"}}> {state.contact.error} </p>
                     <p style={{display: contactstate ?"block":"none",color: "red"}}> Contact Already exists </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password. : </label>
+                <label htmlFor="password" className="form-label h4">Password. : </label>
                     <input type="text" name="password" className="form-control" id="password" value={state.password.value} onChange={(e)=>{handleChange("password",e.target.value)}} />
                     <p style={{display: state.password.touched && state.password.hasError ?"block":"none",color: "red"}}> {state.password.error} </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="address" className="form-label">Address. : </label>
+                <label htmlFor="address" className="form-label h4">Address. : </label>
                     <input type="text" name="address" className="form-control" id="address" value={state.address.value} onChange={(e)=>{handleChange("address",e.target.value)}} />
                     <p style={{display: state.address.touched && state.address.hasError ?"block":"none",color: "red"}}> {state.address.error} </p>
             </div>
 
             <div className="col-12">
-                        <button type="submit" className="btn btn-primary mb-3" onClick={(e)=>{sendData(e)}}>Submit</button>
-                        <button type="reset" className="btn btn-primary mb-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
+                        <button type="submit" className="btn btn-primary m-3" onClick={(e)=>{sendData(e)}}>Submit</button>
+                        <button type="reset" className="btn btn-primary m-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
             </div>
      
 

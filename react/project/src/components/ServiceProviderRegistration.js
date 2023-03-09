@@ -177,17 +177,17 @@ export default function ServiceProviderRegistration() {
 
     const [state,dispatch] = useReducer(reducer,init);
 
-    return (<div>
+    return (<div className="container w-50" id="centre">
         
         <form>
             <div className="mb-3">
-                <label htmlFor="name" className="form-label">Name : </label>
+                <label htmlFor="name" className="form-label h4">Name : </label>
                     <input type="text" name="name" className="form-control" id="name" value={state.name.value} onChange={(e)=>{handleChange("name",e.target.value)}} />
                     <p style={{display: state.name.touched && state.name.hasError ?"block":"none",color: "red"}}> {state.name.error} </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email Id : </label>
+                <label htmlFor="email" className="form-label h4">Email Id : </label>
                     <input type="text" name="email" className="form-control" id="email" value={state.email.value}  onBlur={(e)=>handleBlur(e.target.value)} 
                     onChange={(e)=>{handleChange("email",e.target.value)}} />
                     <p style={{display: state.name.touched && state.email.hasError ?"block":"none",color: "red"}}> {state.email.error} </p>
@@ -198,27 +198,27 @@ export default function ServiceProviderRegistration() {
              
 
             <div className="mb-3">
-                <label htmlFor="contact" className="form-label">Contact No. : </label>
+                <label htmlFor="contact" className="form-label h4">Contact No. : </label>
                     <input type="text" name="contact" className="form-control" id="contact" value={state.contact.value} onBlur={(e)=>handleContact(e.target.value)} onChange={(e)=>{handleChange("contact",e.target.value)}} />
                     <p style={{display: state.contact.touched && state.contact.hasError ?"block":"none",color: "red"}}> {state.contact.error} </p>
                     <p style={{display: contactstate ?"block":"none",color: "red"}}> Contact Already exists </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password. : </label>
+                <label htmlFor="password" className="form-label h4">Password. : </label>
                     <input type="text" name="password" className="form-control" id="password" value={state.password.value} onChange={(e)=>{handleChange("password",e.target.value)}} />
                     <p style={{display: state.password.touched && state.password.hasError ?"block":"none",color: "red"}}> {state.password.error} </p>
             </div>
 
             <div className="mb-3">
-                <label htmlFor="address" className="form-label">Address. : </label>
+                <label htmlFor="address" className="form-label h4">Address. : </label>
                     <input type="text" name="address" className="form-control" id="address" value={state.address.value} onChange={(e)=>{handleChange("address",e.target.value)}} />
                     <p style={{display: state.address.touched && state.address.hasError ?"block":"none",color: "red"}}> {state.address.error} </p>
             </div>
 
             <div className="col-12">
-                        <button type="submit" className="btn btn-primary mb-3" onClick={(e)=>{sendData(e)}}>Submit</button>
-                        <button type="reset" className="btn btn-primary mb-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
+                        <button type="submit" className="btn btn-primary m-3" onClick={(e)=>{sendData(e)}}>Submit</button>
+                        <button type="reset" className="btn btn-primary m-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
             </div>
      
 

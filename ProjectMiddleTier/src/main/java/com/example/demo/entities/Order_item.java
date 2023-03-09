@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  
 @Entity
 @Table(name="order_items")
@@ -17,6 +19,7 @@ public class Order_item
 	@GeneratedValue(strategy=GenerationType.IDENTITY )
 	private int oi_id;
 	
+	@JsonIgnoreProperties("order_items")
 	@ManyToOne
 	@JoinColumn(name="o_id")
 	private Order o_id;
@@ -32,6 +35,11 @@ public class Order_item
 	@OneToOne
 	@JoinColumn(name="status_id")
 	private Status status_id;
+	
+	public Order_item()
+	{
+		
+	}
 
 	public int getOi_id() {
 		return oi_id;

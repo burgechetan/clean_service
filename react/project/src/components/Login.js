@@ -7,6 +7,9 @@ import {login} from '../redux/slice';
 function Login()
 {
     const reduxDispatch = useDispatch();
+     
+    const [message,setMessage]=useState("");
+    const navigate=useNavigate();
     const init={
         uid:"",
         password:""
@@ -17,10 +20,12 @@ function Login()
             case "update":
                 return {...state,[action.field]:action.val}
             case "reset":
+                setMessage("");
                 return init
         }
     }
 
+    const [login_info,dispatch]=useReducer(reducer,init);
     const sendData=(e)=>{
         e.preventDefault();
         const reqOption={
@@ -49,17 +54,23 @@ function Login()
                 }
                 else
                 {
+                    var arr=Object.values(obj);
+                    console.log(arr[0]);
+                    localStorage.setItem("login_id",arr[0])
                     reduxDispatch(login());
                     if(obj.role_id.role_id === 1)
                     {
+                        localStorage.setItem("role","customer");
                         navigate("/customer_home");
                     }
                     else if(obj.role_id.role_id === 2)
                     {
+                        localStorage.setItem("role","service_provider");
                         navigate("/serviceprovider_home");
                     }
                     else if(obj.role_id.role_id === 3)
                     {
+                        localStorage.setItem("role","admin");
                         navigate("/admin_home");
                     }
                 }
@@ -69,31 +80,27 @@ function Login()
         .catch((error)=>{alert("Server error, try after some time")});
     }
 
-   const [login_info,dispatch]=useReducer(reducer,init);
-   const [message,setMessage]=useState("");
-   const navigate=useNavigate();
-   
-
-    return(
-        <div className="imgF height">
+    
+return(
+        <div className="w-50" id="centre">
             <div className="container">
                 <h1 className="head"> Login </h1>
                 <div className="row">
                 <div className="column" >
-                <form>
+                <form className="form">
                     <div className="mb-3">
-                        <label htmlFor="uid" className="form-label">Enter uid : </label>
+                        <label htmlFor="uid" className="form-label h4">Enter uid : </label>
                         <input type="text" name="uid" id="uid" className="form-control"  required value={login_info.uid} onChange={(e)=>{dispatch({type:"update",field:"uid",val:e.target.value})}} />
 
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="pwd" className="form-label">Enter password : </label>
+                        <label htmlFor="pwd" className="form-label h4">Enter password : </label>
                         <input type="password" name="pd" id="pwd" className="form-control" required value={login_info.password} onChange={(e)=>{dispatch({type:"update",field:"password",val:e.target.value} )}}/>
                     </div>
                      
                     <div className="col-12">
-                        <button type="submit" className="btn btn-primary mb-3" onClick={(e)=>{sendData(e)}}>Login</button>
-                        <button type="reset" className="btn btn-primary mb-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
+                        <button type="submit" className="btn btn-primary m-3" onClick={(e)=>{sendData(e)}}>Login</button>
+                        <button type="reset" className="btn btn-primary m-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
                     </div>
                 </form>                    
             </div>

@@ -6,8 +6,9 @@ export default function Services()
     const navigate = useNavigate();
     const [Data,setData]=useState([]);
     const [message,setMessage]=useState("");
+    const[flag,setFlag]=useState(false);
 
-
+    
 
     useEffect(()=>{
         fetch("http://localhost:8080/services")
@@ -29,32 +30,22 @@ export default function Services()
             }
         })
         .catch((error)=>{alert("Server error, try after some time")});
+        var role=localStorage.getItem("role");
+    if(role=="customer")
+        setFlag(true);
 },[])
-    var bookings=[];
+    
     const sendService=(s)=>{
         var mybookings=JSON.parse(localStorage.getItem("cart"));
-        if(mybookings==null )
-        {
-            bookings.push(JSON.stringify(s));
-            localStorage.setItem("cart",bookings);
-            navigate("/admin_home/mybooking")
-        }
-        else
-        {
-            bookings.push(JSON.stringify(mybookings));
-            bookings.push(JSON.stringify(s));
-            localStorage.setItem("cart",JSON.stringify(bookings));
-            navigate("/admin_home/mybooking")
-            
-        }
+        
+        if(mybookings == null)
+            mybookings = [];
+        mybookings.push(s);
+        localStorage.setItem("cart",JSON.stringify(mybookings));
+        navigate("/customer_home/mybooking")
 
     }
    
-   
-     
-
-
-
     return(
         <div>
         <table>
@@ -71,14 +62,14 @@ export default function Services()
         </thead>
         <tbody>
         {
-            Data.map(s => {return <tr>
-                <td>{s.s_id}</td>
+            Data.map((s,i) => {return <tr>
+                <td >{s.s_id}</td>
                 <td>{s.s_name}</td>
                 <td>{s.description}</td>
                 <td>{s.duration}</td>
                 <td>{s.cost}</td>
                 <td>{s.sp_id.name}</td>
-                <td><button onClick={()=>{sendService(s)}}>Buy</button></td>
+                <td style={{display:flag?"block":"none"}}><button onClick={()=>{sendService(s)}}>Buy</button></td>
               
             </tr>})
         }
