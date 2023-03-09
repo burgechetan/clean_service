@@ -1,10 +1,11 @@
 import NavBar from './components/NavBar';
 import cleaningTools from './images/cleaningTools.jpeg';
-import Sample2 from './images/Sample2.jpg';
+import { useSelector } from 'react-redux';
 function App() {
+  const mystate=useSelector((state)=>{return state.logged})
   return (
     <div className="has-bg-img">
-      <img src={cleaningTools} alt={Sample2} className="bg-img" id="bgimg"/>
+      <img src={cleaningTools} className="bg-img" id="bgimg"/>
       <NavBar/>
     </div>
     

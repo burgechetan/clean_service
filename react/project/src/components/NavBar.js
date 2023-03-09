@@ -33,6 +33,9 @@ export default function NavBar()
             <li className="nav-item">
                 <Link to="/lopcation" className="navbar-brand" id="item">Location</Link>
               </li>
+              <li className="nav-item">
+                <Link to="/services" className="navbar-brand" id="item">Services</Link>
+              </li>
             <li className="nav-item">
               <Link to="/login" className="navbar-brand" id="item">Login</Link>
             </li>
@@ -54,7 +57,7 @@ export default function NavBar()
         <Route path="/customer_home" element={<CustomerHome/>} >
               <Route path="services" element={<Services/>} />
         </Route>
-        
+        <Route path="/services" element={<Services/>}/>
         <Route path="/serviceprovider_home" element={<ServiceProviderHome/>} >
           <Route path="services" element={<Services/>} />
         </Route>

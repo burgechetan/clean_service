@@ -177,15 +177,14 @@ export default function ServiceProviderRegistration() {
 
     const [state,dispatch] = useReducer(reducer,init);
 
-    return (<div className="container w-50" id="centre">
+    return (<div className="w-50" id="centre">
         
-        <form>
+        <form className="container form">
             <div className="mb-3">
                 <label htmlFor="name" className="form-label h4">Name : </label>
                     <input type="text" name="name" className="form-control" id="name" value={state.name.value} onChange={(e)=>{handleChange("name",e.target.value)}} />
                     <p style={{display: state.name.touched && state.name.hasError ?"block":"none",color: "red"}}> {state.name.error} </p>
             </div>
-
             <div className="mb-3">
                 <label htmlFor="email" className="form-label h4">Email Id : </label>
                     <input type="text" name="email" className="form-control" id="email" value={state.email.value}  onBlur={(e)=>handleBlur(e.target.value)} 
@@ -216,9 +215,9 @@ export default function ServiceProviderRegistration() {
                     <p style={{display: state.address.touched && state.address.hasError ?"block":"none",color: "red"}}> {state.address.error} </p>
             </div>
 
-            <div className="col-12">
-                        <button type="submit" className="btn btn-primary m-3" onClick={(e)=>{sendData(e)}}>Submit</button>
-                        <button type="reset" className="btn btn-primary m-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
+            <div className="col-12 centre">
+                        <button type="submit" className="btn btn-primary m-2" onClick={(e)=>{sendData(e)}}>Submit</button>
+                        <button type="reset" className="btn btn-primary m-2" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
             </div>
      
 

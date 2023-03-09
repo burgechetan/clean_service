@@ -197,7 +197,7 @@ export default function CustomerRegistration() {
     const [message,setMessage]=useState("");
    
 
-    return (<div  className="container w-50" id="centre">
+    return (<div className="container w-50" id="centre">
         
         <form className="form">
             <div className="mb-3">
@@ -240,9 +240,9 @@ export default function CustomerRegistration() {
                     <p style={{display: state.address.touched && state.address.hasError ?"block":"none",color: "red"}}> {state.address.error} </p>
             </div>
 
-            <div className="col-12">
-                        <button type="submit" className="btn btn-primary m-3" onClick={(e)=>{sendData(e)}}>Submit</button>
-                        <button type="reset" className="btn btn-primary m-3" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
+            <div className="col-12 centre">
+                        <button type="submit" className="btn btn-primary m-2" onClick={(e)=>{sendData(e)}}>Submit</button>
+                        <button type="reset" className="btn btn-primary m-2" onClick={()=>{dispatch({type:"reset"} )}}>Reset</button>
             </div>
      
 

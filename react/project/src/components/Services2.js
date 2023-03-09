@@ -1,7 +1,7 @@
 import {useEffect,useState} from 'react';
 import { useNavigate, json } from 'react-router-dom'
 import BookingCart from './BookingCart';
-export default function Services()
+export default function Services2()
 {
     const navigate = useNavigate();
     const [Data,setData]=useState([]);
@@ -57,32 +57,12 @@ export default function Services()
 
     return(
         <div className="container w-50" id="centre">
-        <table className="table">
-        <thead>
-            <tr>
-                <th className="td" width="200" hight="400">Service ID</th>
-                <th className="td" width="200" hight="400">Service Name</th>
-                <th className="td" width="200" hight="400">Description</th>
-                <th className="td" width="200" hight="400">Duration</th>
-                <th className="td" width="200" hight="400">Cost</th>
-                <th className="td" width="200" hight="400">Service ID</th>
-                <th className="td"></th>
-            </tr>
-        </thead>
-        <tbody>
-        {
-            Data.map(s => {return <tr>
-                <td className="td">{s.s_id}</td>
-                <td className="td text-capitalize">{s.s_name}</td>
-                <td className="td">{s.description}</td>
-                <td className="td">{s.duration}</td>
-                <td className="td">{s.cost}</td>
-                <td className="td text-capitalize">{s.sp_id.name}</td>
-                <td className="td"><button onClick={()=>{sendService(s)}}>Buy</button></td>
-              
-            </tr>})
-        }
-        </tbody>
-        </table>
-    </div>)
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Primary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+        </div>)
 }

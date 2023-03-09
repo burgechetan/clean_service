@@ -20,7 +20,7 @@ export default function ServiceProviderRegistrationStatus()
             .then(obj=>{
                 if(Object.keys(obj).length===0)
                 {
-                    
+                   // window.location.reload();
                    setData([]);
                    setMessage("No ServiceProvider Available");
                 }
