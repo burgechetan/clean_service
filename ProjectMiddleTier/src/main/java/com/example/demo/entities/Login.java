@@ -26,11 +26,9 @@ public class Login
 	private String contact;
 	@Column
 	private String  address;
-	
 	@ManyToOne
 	@JoinColumn(name="role_id")
 	private Role role_id;
-	
 	@Column
 	private boolean status;
 	
@@ -38,7 +36,10 @@ public class Login
 	{
 		
 	}
-	
+	public Login(int login_id)
+	{
+		this.login_id=login_id;
+	}
 	
 	public Login(String password, String email, String contact, String address, Role role_id, boolean status) {
 		super();

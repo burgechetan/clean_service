@@ -16,5 +16,8 @@ public interface ServiceProviderRepository extends JpaRepository<ServiceProvider
 {
 	@Query("select s from ServiceProvider s where s.login_id.status=0")
 	public List<ServiceProvider> getPendingRequests();
+	
+	@Query("select s from ServiceProvider s where s.login_id.login_id=:login_id")
+	public ServiceProvider getByLogin_id(int login_id);
 	 
 }

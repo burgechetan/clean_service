@@ -31,5 +31,15 @@ public class ServiceProviderServices {
 		return sprepo.getPendingRequests();
 	}
 	
+	public  ServiceProvider getByLogin_id(int login_id)
+	{
+		return sprepo.getByLogin_id(login_id);
+	}
+	
+	public  ServiceProvider getById(int sp_id)
+	{
+		return sprepo.findById(sp_id).get();
+	}
+	
 	 
 }

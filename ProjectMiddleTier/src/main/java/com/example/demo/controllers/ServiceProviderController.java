@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dummyentities.DummyServiceProvider;
 import com.example.demo.entities.Login;
+import com.example.demo.entities.PassbasedEncryption;
 import com.example.demo.entities.Role;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.entities.ServiceProvider;
 import com.example.demo.services.LoginService;
 import com.example.demo.services.RoleService;
@@ -32,11 +34,15 @@ public class ServiceProviderController {
 	@Autowired
 	private LoginService lservice;
 	
+	@Autowired
+	SaltValue saltValue;
+	
 	@PostMapping("/regserviceprovider")
 	public ServiceProvider registerServiceProvider(@RequestBody DummyServiceProvider ds )
 	{
 		Role r=rservice.getById(2);
-		Login l=new Login(ds.getPassword(),ds.getEmail(),ds.getContact(),ds.getAddress(),r,false);
+		String encrypted=PassbasedEncryption.genrateSecurePassword(ds.getPassword(),saltValue.getSalt());
+		Login l=new Login( encrypted,ds.getEmail(),ds.getContact(),ds.getAddress(),r,false);
 		lservice.insertLogin(l);
 		ServiceProvider sp=new ServiceProvider(ds.getName(),l);
 		return spservice.registerServiceProvider(sp);
@@ -47,4 +53,17 @@ public class ServiceProviderController {
 	{
 		return spservice.getPendingRequests();
 	}
+	
+	@GetMapping("/serviceproviderByLogin_id")
+	public ServiceProvider getByLogin_id(@RequestParam("login_id") int login_id)
+	{
+		return spservice.getByLogin_id(login_id);
+	}
+	
+	 
+	
+	
+	 
+	
+	
 }

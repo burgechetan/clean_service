@@ -18,4 +18,10 @@ public class Order_itemService
 	{
 		return oir.findAll();
 	}
+	
+	public Order_item insertOrderItems(Order_item o_item)
+	{
+		return oir.save(o_item);
+	}
 }
+

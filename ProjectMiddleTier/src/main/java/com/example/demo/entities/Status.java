@@ -17,6 +17,15 @@ public class Status
 	
 	@Column
 	String status;
+	
+	public Status()
+	{
+		
+	}
+	public Status(String status)
+	{
+		this.status=status;
+	}
 
 	public int getStatus_id() {
 		return status_id;

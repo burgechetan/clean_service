@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dummyentities.LoginCheck;
 import com.example.demo.entities.Login;
+import com.example.demo.entities.PassbasedEncryption;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.services.LoginService;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -22,11 +24,15 @@ public class LoginController
 	@Autowired
 	private LoginService login_serv;
 	
+	@Autowired
+	SaltValue saltValue;
+	
 	@PostMapping("/checkLogin")
 	public Login checkLogin(@RequestBody LoginCheck login_check)
 	{
 		System.out.println("Hello");
-		return login_serv.getLogin(login_check.getUid(), login_check.getPassword());
+		String encrypted=PassbasedEncryption.genrateSecurePassword(login_check.getPassword(),saltValue.getSalt());
+		return login_serv.getLogin(login_check.getUid(), encrypted );
 	}
 	
 	@GetMapping("/approve")

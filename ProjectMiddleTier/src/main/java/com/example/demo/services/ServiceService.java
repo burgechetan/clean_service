@@ -3,6 +3,7 @@ package com.example.demo.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.demo.entities.Service;
 import com.example.demo.repositories.ServiceRepository;
@@ -10,53 +11,29 @@ import com.example.demo.repositories.ServiceRepository;
 @org.springframework.stereotype.Service
 public class ServiceService 
 {
-	@Autowired 
-	ServiceRepository srepo;
-	
-	public List<com.example.demo.entities.Service> getAllServices()
-	{
-		return srepo.findAll();
-	}
 
-	public List<com.example.demo.entities.Service> gethomecleaning() 
+	@Autowired
+	private ServiceRepository srpo;
+	
+	public List<Service> getAllService()
 	{
-		return srepo.gethomeService();
+		return srpo.findAll();
 	}
 	
-	public List<com.example.demo.entities.Service> getkitchencleaning() 
+	public List<Service> getMyService(int sp_id)
 	{
-		return srepo.getkitchenService();
+		return srpo.getMyService(sp_id);
 	}
 	
-	public List<com.example.demo.entities.Service> getBathroomcleaning() 
+	public Service insertService(Service s)
 	{
-		return srepo.getBathroomService();
+		return srpo.save(s);
 	}
 	
-	public List<com.example.demo.entities.Service> getTopscleaning() 
-	{
-		return srepo.getTopsService();
-	}
 	
-	public List<com.example.demo.entities.Service> getFloorcleaning() 
+	public List<Service> getAllSpecificService(int sp_id )
 	{
-		return srepo.getFloorService();
+		return srpo.getMyService(sp_id);
 	}
-	public List<com.example.demo.entities.Service> getDeepcleaning() 
-	{
-		return srepo.getDeepService();
-	}
-	public List<com.example.demo.entities.Service> getOfficecleaning() 
-	{
-		return srepo.getOfficeService();
-	}
-	public List<com.example.demo.entities.Service> getWashroomcleaning() 
-	{
-		return srepo.getWashroomService();
-	}
-
-	public void addService(Service s) 
-	{
-		srepo.save(s);
-	}
+	 
 }

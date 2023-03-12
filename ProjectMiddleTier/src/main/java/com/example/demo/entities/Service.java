@@ -1,7 +1,11 @@
 package com.example.demo.entities;
 
+import java.sql.Time;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity		 
+@Entity
 @Table(name="services")
 public class Service 
 {
@@ -21,8 +25,18 @@ public class Service
 	@Column
 	String s_name;
 	
+	public Service(int s_id, String s_name, String description, String duration, double cost, ServiceProvider sp_id) {
+		super();
+		this.s_id = s_id;
+		this.s_name = s_name;
+		this.description = description;
+		this.duration = duration;
+		this.cost = cost;
+		this.sp_id = sp_id;
+	}
+
 	@Column
-	String descriptions;
+	String description;
 	
 	@Column
 	String duration;
@@ -30,9 +44,19 @@ public class Service
 	@Column
 	double cost;
 	
-	@ManyToOne
+	@ManyToOne  
 	@JoinColumn(name="sp_id")
 	private ServiceProvider sp_id;
+	
+	public Service()
+	{
+		
+	}
+	
+	public Service(int s_id)
+	{
+		this.s_id=s_id;
+	}
 
 	public int getS_id() {
 		return s_id;
@@ -51,11 +75,11 @@ public class Service
 	}
 
 	public String getDescription() {
-		return descriptions;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		this.descriptions = description;
+		this.description = description;
 	}
 
 	public String getDuration() {

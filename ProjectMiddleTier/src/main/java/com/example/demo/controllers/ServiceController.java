@@ -2,81 +2,67 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dummyentities.DummyService;
 import com.example.demo.entities.Service;
+import com.example.demo.entities.ServiceProvider;
+import com.example.demo.services.ServiceProviderServices;
 import com.example.demo.services.ServiceService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 public class ServiceController 
 {
-	@Autowired 
-	ServiceService ss;
+	@Autowired
+	private ServiceService sservice;
 	
-	@GetMapping("/getAllServices")
+	@Autowired
+	private ServiceProviderServices spservice;
+	
+	@GetMapping("/services")
 	public List<Service> getAllService()
 	{
-		return ss.getAllServices();
+		return sservice.getAllService();
 	}
 	
-	@PostMapping("/addservice")
-	public void addService(@RequestBody Service s )
+	@GetMapping("/myservices")
+	public List<Service> getMyService(@RequestParam("login_id") int login_id)
 	{
-		ss.addService(s);
+		ServiceProvider sp=spservice.getByLogin_id(login_id);
+		System.out.println(login_id);
+	 
+		return sservice.getMyService(sp.getSp_id());
 	}
-	
-	@GetMapping("/gethomecleaning")
-	public List<com.example.demo.entities.Service> getBathroomcleaning()
+	 
+	@PostMapping("/insertservice")
+	public Service insertService(@RequestBody Service ds)
 	{
-		return ss.gethomecleaning();
+		System.out.println(ds.getDuration());
+		System.out.println(ds.getS_name());
+		System.out.println(ds.getCost());
+		System.out.println(ds.getSp_id());
+		System.out.println(ds.getSp_id().getName());
+		System.out.println(ds.getDescription());
+		return sservice.insertService(ds);
 	}
 	
-	@GetMapping("/getkitchencleaning")
-	public List<com.example.demo.entities.Service> getTopscleaning()
+	@GetMapping("/specific_services")
+	public List<Service> getAllSpecificService(@RequestParam("sp_id") int sp_id )
 	{
-		return ss.getTopscleaning();
+		return sservice.getMyService(sp_id);
 	}
 	
-	@GetMapping("/getbathroomcleaning")
-	public List<com.example.demo.entities.Service> getbathroomcleaning()
-	{
-		return ss.getBathroomcleaning();
-	}
+	 
+	 
 	
 	
-	@GetMapping("/getkitchentops&tilescleaning")
-	public List<com.example.demo.entities.Service> gettopscleaning()
-	{
-		return ss.getTopscleaning();
-	}
-	
-	@GetMapping("/getofficecleaning")
-	public List<com.example.demo.entities.Service> getofficecleaning()
-	{
-		return ss.getTopscleaning();
-	}
-	
-	@GetMapping("/getwashroomcleaning")
-	public List<com.example.demo.entities.Service> getwashroomcleaning()
-	{
-		return ss.getWashroomcleaning();
-	}
-	
-	@GetMapping("/getfloorcleaning")
-	public List<com.example.demo.entities.Service> getfloorcleaning()
-	{
-		return ss.getFloorcleaning();
-	}
-	
-	@GetMapping("/gethomecleaningdeep")
-	public List<com.example.demo.entities.Service> getdeepcleaning()
-	{
-		return ss.getDeepcleaning();
-	}
 }

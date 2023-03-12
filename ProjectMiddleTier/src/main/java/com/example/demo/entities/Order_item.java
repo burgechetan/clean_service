@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +24,13 @@ public class Order_item
 	@ManyToOne
 	@JoinColumn(name="o_id")
 	private Order o_id;
-	
-	@OneToOne
-	@JoinColumn(name="sp_id")
-	private ServiceProvider sp_id;
+ 
 	
 	@OneToOne
 	@JoinColumn(name="s_id")
 	private Service s_id;
+	
+	
 	
 	@OneToOne
 	@JoinColumn(name="status_id")
@@ -40,6 +40,31 @@ public class Order_item
 	{
 		
 	}
+	
+	
+
+	public Order_item(   Order o_id,Service s_id, Status status_id) {
+		super();
+		
+		this.o_id = o_id;
+	 
+		this.s_id = s_id;
+		this.status_id = status_id;
+	}
+
+
+
+	public Order getO_id() {
+		return o_id;
+	}
+
+
+
+	public void setO_id(Order o_id) {
+		this.o_id = o_id;
+	}
+
+
 
 	public int getOi_id() {
 		return oi_id;
@@ -65,13 +90,7 @@ public class Order_item
 		this.s_id = s_id;
 	}
 
-	public ServiceProvider getSp_id() {
-		return sp_id;
-	}
-
-	public void setSp_id(ServiceProvider sp_id) {
-		this.sp_id = sp_id;
-	}
+	 
 
 	public Status getStatus_id() {
 		return status_id;

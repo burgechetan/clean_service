@@ -16,17 +16,19 @@ public class ServiceProvider
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int sp_id;
-	
 	@Column
 	private String name;
-	
 	@OneToOne
 	@JoinColumn(name="login_id")
 	private Login login_id;
+	public ServiceProvider() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
-	public ServiceProvider() 
+	public ServiceProvider(int id)
 	{
-		
+		this.sp_id=id;
 	}
 	
 	public ServiceProvider(String name, Login login_id) {
@@ -34,11 +36,7 @@ public class ServiceProvider
 		this.name = name;
 		this.login_id = login_id;
 	}
-	
-	public ServiceProvider(int id) 
-	{
-		this.sp_id = id;
-	}
+
 
 	public int getSp_id() {
 		return sp_id;
